@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="API Test Suite">
+    <!-- Define a test group to run specific tests -->
+    <test name="API Test Group">
+        <classes>
+            <!-- Specify the test class to run -->
+            <class name="SASTechAuto.SASTechAuto.TestCase"/>
+        </classes>
+    </test>
+</suite>
