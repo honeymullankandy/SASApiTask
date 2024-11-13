@@ -73,4 +73,8 @@ TestNG: A testing framework to organize and run tests.
 Maven Surefire Plugin: For running tests using the TestNG framework.
 These dependencies are defined in the pom.xml file and will be downloaded automatically when you run mvn install.
 
+using below command mvn clean test
+
 eg Testcase can be seen in test case folder src/test/java/Testcase.java   alternatively run as tenstNg test 
+
+validate the report in test-output/index.html
