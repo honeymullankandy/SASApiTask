@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: Default
 
 variables:
   MAVEN_OPTS: '-Dmaven.test.failure.ignore=false' # Fail the build on test failures
