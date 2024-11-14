@@ -1,0 +1,41 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  MAVEN_OPTS: '-Dmaven.test.failure.ignore=false' # Fail the build on test failures
+  JAVA_HOME: '/usr/lib/jvm/java-11-openjdk-amd64'
+steps:
+  # Step 1: Use Maven
+  - task: UseMaven@1
+    inputs:
+      mavenVersionOption: 'Default'  # Use default Maven version on agent VM
+
+  # Step 2: Maven Build and Test
+  - task: Maven@3
+    inputs:
+      goals: 'clean install'  # Cleans, compiles, and runs tests
+      options: '-B -DskipTests=false'  # Run in batch mode, do not skip tests
+      mavenPomFile: 'pom.xml'  # Path to your pom.xml file (if different from root directory)
+      publishJUnitResults: true  # Publish test results
+
+  # Step 3: Publish Test Results
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFiles: '**/target/surefire-reports/TEST-*.xml'  # Path to TestNG reports
+      testRunTitle: 'TestNG API Test Results'  # Display title for test results in Azure DevOps
+      mergeTestResults: true
+
+  # Step 4 (Optional): Publish Build Artifacts
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: '$(System.DefaultWorkingDirectory)/target'  # Path to Maven target directory
+      artifactName: 'drop'  # Name for the artifact
+      publishLocation: 'Container'  # Store artifacts within Azure DevOps
