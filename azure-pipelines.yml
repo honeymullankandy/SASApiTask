@@ -10,7 +10,7 @@ pool: Default
 
 
 variables:
-  MAVEN_OPTS: '-Dmaven.test.failure.ignore=false'  # Fail the build on test failures
+
   JAVA_HOME: 'C:\Program Files\Java\jdk-19'
   MAVEN_HOME: 'C:\Users\USER\Documents\apache-maven-3.9.0'
   PATH: 'C:\Users\USER\Documents\apache-maven-3.9.0\bin;C:\Program Files\Java\jdk-19\bin;$(PATH)' 
@@ -20,7 +20,7 @@ steps:
 
   # Step 2: Install Maven dependencies and run tests
   - script: |
-      mvn clean install -B -DskipTests=false
+      mvn clean test
     displayName: 'Build and Run Tests with Maven'
 
   # Step 3: Publish Test Results
