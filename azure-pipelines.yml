@@ -6,8 +6,8 @@
 trigger:
 - master
 
-pool:
-  vmImage: Default
+pool: Default
+
 
 variables:
   MAVEN_OPTS: '-Dmaven.test.failure.ignore=false' # Fail the build on test failures
