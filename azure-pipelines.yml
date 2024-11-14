@@ -12,6 +12,7 @@ pool: Default
 variables:
   MAVEN_OPTS: '-Dmaven.test.failure.ignore=false' # Fail the build on test failures
   JAVA_HOME: 'C:\Program Files\Java\jdk-19'
+  MAVEN_HOME: 'C:\Users\USER\Documents\apache-maven-3.9.0'
   PATH: $(JAVA_HOME)\bin;$(PATH)
 steps:
   # Step 1: Check out the repository
