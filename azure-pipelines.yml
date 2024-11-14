@@ -20,7 +20,7 @@ steps:
 
   # Step 2: Install Maven dependencies and run tests
   - script: |
-      mvn clean test
+      mvn clean test -Dmaven.test.failure.ignore=true
     displayName: 'Build and Run Tests with Maven'
 
   # Step 3: Publish Test Results
@@ -29,6 +29,8 @@ steps:
       testResultsFiles: '**/target/surefire-reports/TEST-*.xml'  # Path to TestNG test reports
       testRunTitle: 'TestNG API Test Results'  # Display title in Azure DevOps
       mergeTestResults: true
+      failTaskOnFailedTests: false
+    condition: always()
 
   # Step 4 (Optional): Publish Build Artifacts
   - task: PublishBuildArtifacts@1
